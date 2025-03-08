@@ -3,16 +3,18 @@
 
 <div class="app-mensajes" id="app-mensajes">
 
-    <div *ngFor="let chat of _cs.chats" 
-        [ngClass]="{'text-end' : _cs.usuario?.uid == chat.uid, 'text-start' : _cs.usuario?.uid != chat.uid }"
-    >
-        <span class="badge"
-            [ngClass]="{'bg-primary' : _cs.usuario?.uid == chat.uid, 'bg-success' : _cs.usuario?.uid != chat.uid }"
-        >Jairo</span>
-        <p>
-            {{chat.mensaje}}
-        </p>
+<div *ngFor="let chat of _cs.chats" class="d-flex mb-4"
+    [ngClass]="{'justify-content-end' : _cs.usuario?.uid == chat.uid, 'justify-content-start' : _cs.usuario?.uid != chat.uid }">
+    <div class="img_cont_msg">
+        <img *ngIf="chat.photo" [src]="chat.photo" class="rounded-circle user_img_msg">
     </div>
+    <div class="msg_cotainer">
+        {{chat.mensaje}}
+        <!-- <span class="msg_time">8:40 AM, Today</span> -->
+        <span class="msg_time">{{ getFormattedDateTime(chat.fecha) }}</span>
+    </div>
+</div>
+
     <!-- <div class="text-start">
         <span class="badge bg-success">Isabel</span>
         <p>
@@ -20,8 +22,6 @@
         </p>
     </div> -->
 
-
-    
 
 </div>
 

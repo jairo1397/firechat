@@ -22,10 +22,10 @@ export class ChatService {
   ) {
     onAuthStateChanged(this.auth, (user: User | null) => {
       if (user) {
-        console.log('Usuario autenticado:', user);
         this.usuario.nombre = user.displayName;
         this.usuario.email = user.email;
         this.usuario.uid = user.uid;
+        this.usuario.photo = user.photoURL;
       } else {
         console.log('No hay usuario autenticado');
       }
@@ -68,7 +68,8 @@ export class ChatService {
       nombre: this.usuario.nombre,
       mensaje: texto,
       fecha: new Date().getTime(),
-      uid:this.usuario.uid
+      uid:this.usuario.uid,
+      photo: this.usuario.photo
     };
 
     // Asegurar que itemsCollection esté correctamente definido

@@ -21,13 +21,13 @@ import { ChatService } from './providers/chat.service';
     ChatService
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   chats: Observable<any[]>; // Observable para la lista de items
   private firestore = inject(Firestore); // Inyección moderna
   public cs = inject(ChatService);
-  
+
   constructor() {
     const colRef = collection(this.firestore, 'chats'); // Reemplaza con el nombre de tu colección
     this.chats = collectionData(colRef); // Asigna el observable para usar en el template
